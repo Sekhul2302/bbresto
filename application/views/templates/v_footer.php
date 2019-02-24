@@ -29,22 +29,36 @@
   })
 </script>
 <script>
+  
+
   $(document).ready(function(){
+    
     $("#btn2").click(function(){
       var idBelanja = $("#idBelanja").val();
-      var jenisBelanja = $("#jenisBelanja").val();
-      var namaBelanja = $("#namaBelanja").val();
-      var harga = $("#harga").val();
-      var keterangan = $("#keterangan").val();
+      var jenisBelanja = $("#JenisBelanja").val();
+      var namaBelanja = $("#nb").val();
+      var harga = $("#hrg").val();
+      var keterangan = $("#ket").val();
       var markup = `<tr>
-                        <td>`+ idBelanja + `</td>
+                        <td name='idBlanja' class='idBlanja'>`+ idBelanja + `</td>
                         <td>` + jenisBelanja + `</td>
                         <td>` + namaBelanja + `</td>
-                        <td>` + harga + `</td>
+                        <td class="harga">` + harga + `</td>
                         <td>` + keterangan + `</td>
                         <td><input type='checkbox' name='record'></td>
                     </tr>`;
       $("table tbody").append(markup);
+
+      var TotalValue = 0;
+      $("#sum tr").each(function(){
+            TotalValue += parseFloat($(this).find('.harga').text());
+            $("#totalBelanja").val(TotalValue);
+      });
+
+      var jenisBelanja = $("#jenisBelanja").val('');
+      var namaBelanja = $("#namaBelanja").val('');
+      var harga = $("#harga").val('');
+      var keterangan = $("#keterangan").val('');
     });
 
     // Find and remove selected table rows
@@ -54,8 +68,35 @@
                     $(this).parents("tr").remove();
                 }
             });
-        });
+    });
+
+    //chechk all
+    $("#check-All").click(function(){
+      $("input:checkbox").attr('checked', true);
+    })
+
+    //submit data
+    $("#formDetailBelanja").on("submit", function(){
+      alert("test");
+    });
+
+    $("#form-belanja").on("submit", function(event){
+      var count = 0;
+      //alert('test');
+      //console.log(count);
+      event.preventDefault();
+      $(".idBlanja").each(function(){
+        count = count + 1;
+        console.log(count);
+      })
+
+      if (count>0){
+        var form_data = $("#form-belanja").serialize();
+        console.log(form_data);
+      }
+    });
   });
+
 </script>
 </body>
 </html>
