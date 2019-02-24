@@ -30,9 +30,31 @@
 </script>
 <script>
   $(document).ready(function(){
-    $("#btnTmbh").click(function(){
-      alert("test");
+    $("#btn2").click(function(){
+      var idBelanja = $("#idBelanja").val();
+      var jenisBelanja = $("#jenisBelanja").val();
+      var namaBelanja = $("#namaBelanja").val();
+      var harga = $("#harga").val();
+      var keterangan = $("#keterangan").val();
+      var markup = `<tr>
+                        <td>`+ idBelanja + `</td>
+                        <td>` + jenisBelanja + `</td>
+                        <td>` + namaBelanja + `</td>
+                        <td>` + harga + `</td>
+                        <td>` + keterangan + `</td>
+                        <td><input type='checkbox' name='record'></td>
+                    </tr>`;
+      $("table tbody").append(markup);
     });
+
+    // Find and remove selected table rows
+    $("#btn-delete").click(function(){
+            $("table tbody").find('input[name="record"]').each(function(){
+            	if($(this).is(":checked")){
+                    $(this).parents("tr").remove();
+                }
+            });
+        });
   });
 </script>
 </body>

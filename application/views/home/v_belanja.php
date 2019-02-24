@@ -18,7 +18,7 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form role="form">
+              <form role="form">
                 <div class="box-body">
                     <div class="form-group col-md-3">
                     <label for="exampleInputEmail1">Id Belanja</label>
@@ -32,21 +32,67 @@
                     <label for="exampleInputPassword1">Modal</label>
                     <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
                     </div>
-                </form>
-                    <div class="form-group col-md-4">
-                    <button id="btn1">Prepend text</button>
-                    </div>
+                    
                     <div class="form-group col-md-12">
-                
+
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Bordered Table</h3>
+            <h3 class="box-title">Add Barang</h3>
             </div>
+          <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Id Belanja</label>
+                    <input type="text" id="idBelanja" placeholder="Id Belanja" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Jenis Belanja</label>
+                    <input type="text" id="jenisBelanja" placeholder="Jenis Belanja" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nama Belanjaan</label>
+                    <input type="text" id="namaBelanja" placeholder="Nama Belanjaan" class="form-control">
+                  </div>
+                  
+                </div>
+                <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Harga</label>
+                  <input type="text" id="harga" placeholder="Harga" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Textarea</label>
+                  <textarea class="form-control" id='keterangan' rows="3" placeholder="Enter ..."></textarea>
+                </div>
+                <div class="form-group">
+                    <button type='button' id='btn2' class="btn btn-primary">Tambah Belanjaan</button>
+                </div> 
+                                      
+              </div>
+            </div>
+              
+            
+            
+            
+           
+            
+            
+          </div>
+
+          <div class="box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">List Barang</h3>
+               
+          </div>
+            
             <!-- /.box-header -->
             <div class="box-body">
-              <table class="table table-bordered">
+            
+              <table id="myTable" class="myTable table table-bordered">
+              <thead>
                 <tr>
-                  <th style="width: 10px">#</th>
                   <th>ID Belanja</th>
                   <th>Jenis Belanja</th>
                   <th>Nama Belanjaan</th>
@@ -54,15 +100,10 @@
                   <th>Keterangan</th>  
                   <th>Action</th>                
                 </tr>
-                <tr>
-                  <td>1</td>
-                  <td>BL005</td>
-                  <td>Belanja Pasar</td>
-                  <td>Tepung</td>
-                  <td>10000</td>
-                  <td>Tepung 1 kg</td>
-                  <td><a href="" class='fa fa-remove'></a></td>
-                </tr>
+              </thead>
+                <tbody>
+                
+                </tbody>
               </table>
             </div>
                 </div>
@@ -71,10 +112,10 @@
 
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" id='btn-delete' class="btn btn-primary">Delete selected</button>
                 </div>
-                
+                </form>
             </div>
         </section>
-
 </div>
 <!-- /.content-wrapper -->
