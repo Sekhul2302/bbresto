@@ -12,7 +12,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="<?=base_url();?>assets/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- //<script src="<?=base_url();?>assets/bower_components/jquery/dist/jquery.min.js"></script> -->
 <!-- Bootstrap 3.3.7 -->
 <script src="<?=base_url();?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
@@ -55,6 +55,54 @@
                 }
             });
         });
+
+  $('#user_dialog').dialog({
+    autoOpen:false,
+    width:1000
+  });
+
+	$('#add').click(function(){
+		$('#user_dialog').dialog('option', 'title', 'Add Data');
+		$('#first_name').val('');
+		$('#last_name').val('');
+		$('#error_first_name').text('');
+		$('#error_last_name').text('');
+		$('#first_name').css('border-color', '');
+		$('#last_name').css('border-color', '');
+		$('#save').text('Save');
+		$('#user_dialog').dialog('open');
+  });
+  
+  $('#save').click(function(){
+		var idBelanja = '';
+    var last_name = '';		
+    first_name = $('#i_idBelanja').val();
+    //console.log(first_name);
+			if($('#save').text() == 'Save')
+			{
+				count = count + 1;
+				output = '<tr id="row_'+count+'">';
+				output += '<td>'+first_name+' <input type="hidden" name="hidden_first_name[]" id="first_name'+count+'" class="first_name" value="'+first_name+'" /></td>';
+				output += '<td>'+last_name+' <input type="hidden" name="hidden_last_name[]" id="last_name'+count+'" value="'+last_name+'" /></td>';
+				output += '<td><button type="button" name="view_details" class="btn btn-warning btn-xs view_details" id="'+count+'">View</button></td>';
+				output += '<td><button type="button" name="remove_details" class="btn btn-danger btn-xs remove_details" id="'+count+'">Remove</button></td>';
+				output += '</tr>';
+				$('#user_data').append(output);
+			}
+			else
+			{
+				var row_id = $('#hidden_row_id').val();
+				output = '<td>'+first_name+' <input type="hidden" name="hidden_first_name[]" id="first_name'+row_id+'" class="first_name" value="'+first_name+'" /></td>';
+				output += '<td>'+last_name+' <input type="hidden" name="hidden_last_name[]" id="last_name'+row_id+'" value="'+last_name+'" /></td>';
+				output += '<td><button type="button" name="view_details" class="btn btn-warning btn-xs view_details" id="'+row_id+'">View</button></td>';
+				output += '<td><button type="button" name="remove_details" class="btn btn-danger btn-xs remove_details" id="'+row_id+'">Remove</button></td>';
+				$('#row_'+row_id+'').html(output);
+			}
+
+			$('#user_dialog').dialog('close');
+		
+	});
+
   });
 </script>
 </body>
