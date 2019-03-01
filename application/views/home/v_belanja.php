@@ -11,9 +11,12 @@
     <div class="table-responsive">
       <table class="table table-striped table-bordered" id="user_data">
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Details</th>
+          <th>ID Belanja</th>
+          <th>Jenis Belanjaan</th>
+          <th>Nama Belanjaan</th>
+          <th>Harga</th>
+          <th>Keterangan</th>
+          <th>Detail</th>
           <th>Remove</th>
         </tr>
       </table>
