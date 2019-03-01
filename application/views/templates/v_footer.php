@@ -29,31 +29,48 @@
   })
 </script>
 <script>
+  
+
   $(document).ready(function(){
+    
     $("#btn2").click(function(){
       var idBelanja = $("#idBelanja").val();
-      var jenisBelanja = $("#jenisBelanja").val();
-      var namaBelanja = $("#namaBelanja").val();
-      var harga = $("#harga").val();
-      var keterangan = $("#keterangan").val();
+      var jenisBelanja = $("#JenisBelanja").val();
+      var namaBelanja = $("#nb").val();
+      var harga = $("#hrg").val();
+      var keterangan = $("#ket").val();
       var markup = `<tr>
-                        <td>`+ idBelanja + `</td>
+                        <td name='idBlanja' class='idBlanja'>`+ idBelanja + `</td>
                         <td>` + jenisBelanja + `</td>
                         <td>` + namaBelanja + `</td>
-                        <td>` + harga + `</td>
+                        <td class="harga">` + harga + `</td>
                         <td>` + keterangan + `</td>
                         <td><input type='checkbox' name='record'></td>
                     </tr>`;
       $("table tbody").append(markup);
+
+      var TotalValue = 0;
+      $("#sum tr").each(function(){
+            TotalValue += parseFloat($(this).find('.harga').text());
+            $("#totalBelanja").val(TotalValue);
+      });
+
+      var jenisBelanja = $("#jenisBelanja").val('');
+      var namaBelanja = $("#namaBelanja").val('');
+      var harga = $("#harga").val('');
+      var keterangan = $("#keterangan").val('');
     });
 
     // Find and remove selected table rows
     $("#btn-delete").click(function(){
-            $("table tbody").find('input[name="record"]').each(function(){
-            	if($(this).is(":checked")){
-                    $(this).parents("tr").remove();
-                }
-            });
+      $("table tbody").find('input[name="record"]').each(function(){
+        if($(this).is(":checked")){
+              $(this).parents("tr").remove();
+          }
+      });
+
+      //
+<<<<<<< HEAD
         });
 
   $('#user_dialog').dialog({
@@ -103,7 +120,37 @@
 		
 	});
 
+=======
+    });
+
+    //chechk all
+    $("#check-All").click(function(){
+      $("input:checkbox").attr('checked', true);
+    })
+
+    //submit data
+    $("#formDetailBelanja").on("submit", function(){
+      alert("test");
+    });
+
+    $("#form-belanja").on("submit", function(event){
+      var count = 0;
+      //alert('test');
+      //console.log(count);
+      event.preventDefault();
+      $(".idBlanja").each(function(){
+        count = count + 1;
+        console.log(count);
+      })
+
+      if (count>0){
+        var form_data = $("#form-belanja").serialize();
+        console.log(form_data);
+      }
+    });
+>>>>>>> 645ee8bcb2504c871a7b2b1c41354cbf28b4ee69
   });
+
 </script>
 </body>
 </html>
