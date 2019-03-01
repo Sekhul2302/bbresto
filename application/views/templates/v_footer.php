@@ -70,7 +70,6 @@
       });
 
       //
-<<<<<<< HEAD
         });
 
   $('#user_dialog').dialog({
@@ -120,35 +119,6 @@
 		
 	});
 
-=======
-    });
-
-    //chechk all
-    $("#check-All").click(function(){
-      $("input:checkbox").attr('checked', true);
-    })
-
-    //submit data
-    $("#formDetailBelanja").on("submit", function(){
-      alert("test");
-    });
-
-    $("#form-belanja").on("submit", function(event){
-      var count = 0;
-      //alert('test');
-      //console.log(count);
-      event.preventDefault();
-      $(".idBlanja").each(function(){
-        count = count + 1;
-        console.log(count);
-      })
-
-      if (count>0){
-        var form_data = $("#form-belanja").serialize();
-        console.log(form_data);
-      }
-    });
->>>>>>> 645ee8bcb2504c871a7b2b1c41354cbf28b4ee69
   });
 
 </script>
