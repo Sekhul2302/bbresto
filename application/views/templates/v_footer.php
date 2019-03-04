@@ -110,11 +110,11 @@
         count = count + 1;
         output = `
           <tr id="row_`+count+`">
-            <td>`+idBelanja+` <input type="hidden" name="hidden_first_name[]" id="idBelanja`+count+`" class="idBelanja" value="`+idBelanja+`" /></td>
-            <td>`+i_jenisBelanjaan+` <input type="hidden" name="hidden_first_name[]" id="first_name`+count+`" class="first_name" value="`+i_jenisBelanjaan+`" /></td>
-            <td>`+i_namaBelanjaan+` <input type="hidden" name="hidden_first_name[]" id="first_name`+count+`" class="first_name" value="`+i_namaBelanjaan+`" /></td>
-            <td>`+i_harga+` <input type="hidden" name="hidden_first_name[]" id="first_name`+count+`" class="first_name" value="`+i_harga+`" /></td>
-            <td>`+i_keterangan+` <input type="hidden" name="hidden_first_name[]" id="first_name`+count+`" class="first_name" value="`+i_keterangan+`" /></td>
+            <td>`+idBelanja+` <input type="hidden" name="hidden_idBelanja[]" id="idBelanja`+count+`" class="idBelanja" value="`+idBelanja+`" /></td>
+            <td>`+i_jenisBelanjaan+` <input type="hidden" name="hidden_i_jenisBelanjaan[]" id="i_jenisBelanjaan`+count+`"  value="`+i_jenisBelanjaan+`" /></td>
+            <td>`+i_namaBelanjaan+` <input type="hidden" name="hidden_i_namaBelanjaan[]" id="i_namaBelanjaan`+count+`"  value="`+i_namaBelanjaan+`" /></td>
+            <td>`+i_harga+` <input type="hidden" name="hidden_i_harga[]" id="i_harga`+count+`"  value="`+i_harga+`" /></td>
+            <td>`+i_keterangan+` <input type="hidden" name="hidden_i_keterangan[]" id="i_keterangan`+count+`"  value="`+i_keterangan+`" /></td>
             <td><button type="button" name="view_details" class="btn btn-warning btn-xs view_details" id="`+count+`">View</button></td>
             <td><button type="button" name="remove_details" class="btn btn-danger btn-xs remove_details" id="`+count+`">Remove</button></td>
           </tr>
@@ -126,28 +126,39 @@
       }
       else{
         var row_id = $('#hidden_row_id').val();
-        console.log(row_id);
+        console.log("edit"+row_id);
         output = `
-          <td>+idBelanja+ <input type="hidden" name="hidden_first_name[]" id="idBelanja+row_id+" class="idBelanja" value="+idBelanja+" /></td>
-				  <td><button type="button" name="view_details" class="btn btn-warning btn-xs view_details" id="+row_id+">View</button></td>
-				  <td><button type="button" name="remove_details" class="btn btn-danger btn-xs remove_details" id="+row_id+">Remove</button></td>
+          <td>`+idBelanja+` <input type="hidden" name="hidden_idBelanja[]" id="idBelanja`+row_id+`" class="idBelanja" value="`+idBelanja+`" /></td>
+          <td>`+i_jenisBelanjaan+` <input type="hidden" name="hidden_i_jenisBelanjaan[]" id="idBelanja`+row_id+`" class="i_jenisBelanjaan" value="`+i_jenisBelanjaan+`" /></td>
+          <td>`+i_namaBelanjaan+` <input type="hidden" name="hidden_i_namaBelanjaan[]" id="idBelanja`+row_id+`" class="i_namaBelanjaan" value="`+i_namaBelanjaan+`" /></td>
+          <td>`+i_harga+` <input type="hidden" name="hidden_i_harga[]" id="idBelanja`+row_id+`" class="i_harga" value="`+i_harga+`" /></td>
+          <td>`+i_keterangan+` <input type="hidden" name="hidden_i_keterangan[]" id="idBelanja`+row_id+`" class="i_keterangan" value="`+i_keterangan+`" /></td>
+				  <td><button type="button" name="view_details" class="btn btn-warning btn-xs view_details" id="`+row_id+`">View</button></td>
+				  <td><button type="button" name="remove_details" class="btn btn-danger btn-xs remove_details" id="`+row_id+`">Remove</button></td>
         `
 				$('#row_'+row_id+'').html(output);
         
         
       }
     $('#user_dialog').dialog('close');
-    sa//
 		
   });
   
   $(document).on('click', '.view_details', function(){
     var row_id = $(this).attr("id");
-    console.log(row_id);
+    console.log("view"+row_id);
     var idBelanja = $('#idBelanja'+row_id+'').val();
+    var i_jenisBelanjaan = $('#i_jenisBelanjaan'+row_id+'').val();
+    var i_namaBelanjaan = $('#i_namaBelanjaan'+row_id+'').val();
+    var i_harga = $('#i_harga'+row_id+'').val();
+    var i_keterangan = $('#i_keterangan'+row_id+'').val();
     console.log(idBelanja);
 		// //var last_name = $('#last_name'+row_id+'').val();
 		$('#i_idBelanja').val(idBelanja);
+		$('#i_jenisBelanjaan').val(i_jenisBelanjaan);
+		$('#i_namaBelanjaan').val(i_namaBelanjaan);
+		$('#i_harga').val(i_harga);
+		$('#i_keterangan').val(i_keterangan);
 		// //$('#last_name').val(last_name);
 		$('#save').text('Edit');
     $('#hidden_row_id').val(row_id);
@@ -166,6 +177,40 @@
 			return false;
 		}
 	});
+
+  $('#user_form').on('submit', function(event){
+    //console.log("test");
+		 event.preventDefault();
+		 var count_data = 0;
+		 $('.idBelanja').each(function(){
+		 	count_data = count_data + 1;
+       console.log(count_data);
+		 });
+		if(count_data > 0)
+		{
+			var form_data = $(this).serialize();
+      console.log(form_data);
+			 $.ajax({
+			 	// url:"insert.php",
+			 	// method:"POST",
+			 	data:form_data,
+		  	success:function(data)
+			  	{
+           console.log(data);
+			  		$('#user_data').find("tr:gt(0)").remove();
+			  		$('#action_alert').html('<p>Data Inserted Successfully</p>');
+			  		$('#action_alert').dialog('open');
+			  	}
+			 })
+		}
+		// else
+		// {
+		// 	$('#action_alert').html('<p>Please Add atleast one data</p>');
+		// 	$('#action_alert').dialog('open');
+		 }
+	});
+
+  
 
   });
 

@@ -1,4 +1,5 @@
 <div class="content-wrapper">
+<form method="post" id="user_form">
   <label for="idBelanja">idBelanja</label>
   <input type="text" id="idBelanja" name="idBelanja">
   <label for="i_tanggal">Tanggal</label>
@@ -7,7 +8,7 @@
   <input type="text" id="i_modal" name="i_modal">
   <br>
   <button type="button" name="add" id="add" class="btn btn-success btn-xs">Add</button>
-  <form method="post" id="user_form">
+  
     <div class="table-responsive">
       <table class="table table-striped table-bordered" id="user_data">
         <tr>
