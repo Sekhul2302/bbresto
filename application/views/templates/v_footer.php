@@ -190,25 +190,25 @@
 		{
 			var form_data = $(this).serialize();
       console.log(form_data);
-			 $.ajax({
-			 	// url:"insert.php",
-			 	// method:"POST",
-			 	data:form_data,
-		  	success:function(data)
-			  	{
-           console.log(data);
-			  		$('#user_data').find("tr:gt(0)").remove();
-			  		$('#action_alert').html('<p>Data Inserted Successfully</p>');
-			  		$('#action_alert').dialog('open');
-			  	}
-			 })
-		}
+      $.ajax({
+      url:"http://localhost/bbresto/home/insert",
+      method:"POST",
+      data:form_data,
+      success:function(data)
+        {
+          console.log(data);
+          // $('#user_data').find("tr:gt(0)").remove();
+          // $('#action_alert').html('<p>Data Inserted Successfully</p>');
+          // $('#action_alert').dialog('open');
+        }
+      })
+		
 		// else
 		// {
 		// 	$('#action_alert').html('<p>Please Add atleast one data</p>');
 		// 	$('#action_alert').dialog('open');
 		 }
-	});
+	  });
 
   
 
